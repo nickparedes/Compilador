@@ -1,0 +1,59 @@
+<programa> --> <macros> <preambulo> <funcion principal>
+<macros> --> # <orden> <macros> | &
+<orden> --> set id " cadena " | select " cadena "
+<preambulo> --> <funcion> <preambulo> | <clase> <preambulo> | &
+<funcion> --> func <tipo dato> id ( <parametros> ) { <cuerpo> }
+<parametros> --> <tipo dato> id <vectorizacion> <resto parametros> | &
+<resto parametros> --> , <tipo dato> id <resto parametros> | &
+<cuerpo> --> <sentencia> <cuerpo> | &
+<clase> --> Abstract id <herencia> { <cuerpo clase> }
+<herencia> --> ( id ) | &
+<cuerpo clase> --> <miembro clase> <cuerpo clase> | &
+<miembro clase> --> <modificador> <miembro>
+<estatico> --> static | &
+<miembro> --> <estatico> <M> <asignacion> | <constructor>
+<M> --> <atributo> | <funcion>
+<modificador> --> private | public | protected
+<atributo> --> <tipo dato> id <asignacion> ;
+<constructor> --> Abstract ( <parametros> ) { <cuerpo> }
+<tipo dato> --> integer | String | boolean | flot | id | definido
+<funcion principal> --> integer main () { <cuerpo> }
+<sentencia> --> String <declaracion> <resto declaraciones> ; | flot <declaracion> <resto declaraciones> ; | boolean <declaracion> <resto declaraciones> ; | integer <declaracion> <resto declaraciones> ; | id <P> ; | definido <declaracion> <resto declaraciones> ; | <bucle> | <condicional> | <seleccion> | return <operacion>; | <std stream>; | break; | self <G>;
+<G> --> .id <N>  = <operacion> | = <O>
+<O> --> size ( id ( <variables> ) ) | id
+<P> --> <declaracion> <resto declaraciones> | <indexacion> = <operacion> | <operadores unitarios> | <llamada funcion> | .id <llamada funcion> <indexacion> <N> = <operacion>
+<N> --> .id <indexacion> <N> | &;
+<std stream> --> print(<variables>) | input() | error( " cadena ")
+<C> --> cadena | &
+<resto declaraciones> --> , <declaracion> <resto declaraciones> | &
+<declaracion> --> id <vectorizacion> <asignacion>
+<vectorizacion> --> [ <operacion> ] <resto vectorizacion> | &
+<resto vectorizacion> --> [ <operacion> ] | &
+<index> --> constante neutra | constante entero | &
+<asignacion> --> = <operacion>  | &
+<operacion> --> <T><R>
+<R> --> <operador><T><R> | &
+<T> --> <negacion> <F> <indexacion> <op>
+<F> --> ( <operacion> ) | constante entero | constante neutra | constante real | id <llamada a funcion> | <booleano> | " <C> " | size ( id ( <variables> ) ) | integer | String | boolean | definido | flot | self | input() | { <variables> }
+<negacion> --> ! | not | - | &
+<op> --> <operadores unitarios> | <asignacion> | &
+<indexacion> --> [ <operacion> ] <resto indexacion> | &
+<resto indexacion> --> [ <operacion> ] | &
+<llamada a funcion> --> ( <variables> ) | &
+<variables> --> <operacion> <resto variables> | &
+<resto variables> --> , <operacion> <resto variables> | &
+<operadores unitarios> --> ++ | --
+<operador> --> + | - | * | / | ** | mod | > | < | >= | <= | == | and | or | != | . | to
+<booleano> --> TRUE | FALSE
+<bucle> --> while ( <operacion> ) { <cuerpo> } | loop ( <tipo dato> id, id ) { <cuerpo> }
+<condicional> --> true ( <operacion> ) { <cuerpo> } <tambien> <sino>
+<tambien> --> also ( <operacion> ) { <cuerpo> } | &
+<sino> --> false { <cuerpo> } | &
+<seleccion> --> switch ( id <Y> ) { <casos> }
+<Y> --> , <comparador>
+<comparador> --> >, <, ==, <=, >=
+<casos> --> <caso> <casos> | &
+<caso> --> case <entero> : <cuerpo>
+
+
+
